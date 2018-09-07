@@ -1,0 +1,35 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: example-api-svc
+  labels:
+    app: example-api
+    component: example-api-svc
+    tier: backend
+spec:
+  ports:
+  - protocol: TCP
+    port: 3333
+    targetPort: 3333
+  selector:
+    component: example-api
+
+
+---
+
+## easy way to test out the service in kube - by just exposing it via a nodePort.. there are better ways typically
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: externalize-example-api
+spec:
+  selector:
+    component: example-api
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 3333
+    targetPort: 3333
+    nodePort: 32002

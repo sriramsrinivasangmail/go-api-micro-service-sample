@@ -1,0 +1,24 @@
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: example-api
+  labels:
+    app: example
+    component: example-api
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: example-api
+  template:
+    metadata:
+      labels:
+        app: portal
+        component: example-api
+        enabled: "true"
+    spec:
+      containers:
+      - name: example-api 
+        image: mycluster.icp:8500/default/example-api:v1
