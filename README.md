@@ -4,6 +4,9 @@ A simple tutorial (or perhaps even a boiler plate to getting started)  that show
 
 ### Setup tips:
 
+- add this to your docker preferences. 
+![dockerSS](https://imgur.com/download/UYLV3Bk "Docker Preferences")
+
 - set mycluster.icp to your cluster's ip address in /etc/hosts
   example: `9.30.42.249 mycluster.icp`
 
