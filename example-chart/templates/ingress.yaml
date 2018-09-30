@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "my-https-chart.fullname" . -}}
+{{- $fullName := include "example-chart.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app: {{ template "my-https-chart.name" . }}
-    chart: {{ template "my-https-chart.chart" . }}
+    app: {{ template "example-chart.name" . }}
+    chart: {{ template "example-chart.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}
@@ -26,13 +26,10 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ . }}
-      http:
+    - http:
         paths:
           - path: {{ $ingressPath }}
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: http
-  {{- end }}
+              serviceName: {{ template "example-chart.fullname" . }}
+              servicePort: {{ .Values.service.port }}
 {{- end }}

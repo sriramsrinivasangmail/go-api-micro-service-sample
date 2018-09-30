@@ -14,13 +14,13 @@ service:
   port: 3333
 
 ingress:
-  enabled: false
+  enabled: enabled
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /my
-  hosts:
-    - my-https-chart.local
+  #hosts:
+  #  - my-https-chart.local
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

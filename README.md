@@ -1,4 +1,4 @@
-# An example-api-micro-service
+# A go lang API starter for ICP/Kube
 
 A simple tutorial (or perhaps even a boiler plate to getting started)  that show cases how to use Swagger for a golang based micro-service - containerized and deployed on ICP/Kube 
 
